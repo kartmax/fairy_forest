@@ -1,0 +1,147 @@
+/* USER VARIABLES SECTION */
+
+:root {
+	--fontsize: 1rem;
+	--color-text: #fffdee;
+	--lineheight: 1.55;
+	--userfont: raleway_r, sans-serif;
+	--systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+   --index: calc(1vw + 1vh);
+   --transition: transform .75s cubic-bezier(.075, .5, 0, 1);
+}
+
+/* FONTS LOAD SECTION */
+
+@font-face { src: url("../fonts/raleway-regular.woff2") format("woff2"); font-family: "raleway_r"; font-weight: 400; font-style: normal; }
+@font-face { src: url("../fonts/raleway-black.woff2") format("woff2"); font-family: "raleway_r"; font-weight: 900; font-style: normal; }
+
+/* GENERAL CSS SETTINGS */
+
+body {
+	font-family: var(--userfont);
+	font-size: var(--fontsize);
+	line-height: var(--lineheight);
+	color: var(--textcolor);
+   background-color: #010101;
+	min-width: 320px;
+	position: relative;
+	overflow-x: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* USER STYLES */
+
+/* Main Header */
+.main-header {
+   position: relative;
+}
+.main-header::after {
+   content: '';
+   z-index: 4;
+   position: absolute;
+   bottom: calc(var(--index) * -4.5);
+   width: 100%;
+   height: calc(var(--index) * 10);
+   background-image: url('../images/ground.png');
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+/* Layers */
+.layers {
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   overflow: hidden;
+   position: relative;
+}
+.layer {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   background-size: cover;
+   background-position: center;
+   will-change: transform;
+   transition: var(--transition);
+   z-index: 2;
+}
+.layers__base {
+   transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+   z-index: 0;
+}
+.layers__middle {
+   transform: translate3d(0, calc(var(--scrollTop) / 2.5), 0);
+}
+.layers__front {
+   transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
+}
+.layers__header {
+   z-index: 1;
+   text-transform: uppercase;
+   will-change: transform;
+   transform: translate3d(0, calc(var(--scrollTop) / 2.5), 0);
+   transition: var(--transition);
+}
+.layers__header * {
+   font-weight: 900;
+   color: var(--color-text);
+   text-shadow: 0 0 20px #645336;
+}
+.layers__title {
+   font-size: calc(var(--index) * 2.5);
+   letter-spacing: calc(var(--index) / 2.25);
+}
+.layers__caption {
+   font-size: calc(var(--index) / 1.25);
+   letter-spacing: calc(var(--index) / 3.5);
+   margin-bottom: 5px;
+}
+
+/* Main Article */
+.main-article {
+   position: relative;
+   min-height: 100vh;
+   background-size: cover;
+   background-position: center;
+   color: var(--color-text);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   text-align: center;
+}
+.main-article__content {
+   will-change: transform;
+   margin-top: calc(var(--index) * -8);
+   transform: translate3d(0, calc(var(--scrollTop) / 9), 0);
+   transition: var(--transition);
+}
+.main-article__title {
+   text-transform: uppercase;
+   font-weight: 900;
+   font-size: calc(var(--index) * 1.5);
+   letter-spacing: calc(var(--index) / 7.5);
+   margin-bottom: calc(var(--index) * 1.2);
+}
+.main-article__description {
+   max-width: calc(var(--index) * 25);
+}
+.copy {
+   position: absolute;
+   bottom: calc(var(--index) * 1.5);
+   opacity: .6;
+   font-size: calc(var(--index) * .75);
+   letter-spacing: calc(var(--index) / 7.5);
+}
+
+.content-scroll {
+   will-change: transform;
+}
+
